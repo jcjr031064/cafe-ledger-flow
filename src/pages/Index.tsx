@@ -2,13 +2,29 @@
 import { useState } from 'react';
 import { Sidebar } from '@/components/layout/Sidebar';
 import { Dashboard } from '@/components/dashboard/Dashboard';
+import { BranchDashboard } from '@/components/pos/BranchDashboard';
 import { EntityManagement } from '@/components/entities/EntityManagement';
 import { ChartOfAccounts } from '@/components/accounts/ChartOfAccounts';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('dashboard');
+  // Simulate user role - in real app this would come from authentication
+  const userRole = 'branch'; // 'head_office' | 'branch' | 'commissary'
 
   const renderContent = () => {
+    // Branch users only see POS dashboard and limited features
+    if (userRole === 'branch') {
+      switch (activeSection) {
+        case 'dashboard':
+          return <BranchDashboard />;
+        case 'chart-of-accounts':
+          return <ChartOfAccounts />;
+        default:
+          return <BranchDashboard />;
+      }
+    }
+
+    // Head office users see full system
     switch (activeSection) {
       case 'dashboard':
         return <Dashboard />;
@@ -33,7 +49,11 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 flex w-full">
-      <Sidebar activeSection={activeSection} onSectionChange={setActiveSection} />
+      <Sidebar 
+        activeSection={activeSection} 
+        onSectionChange={setActiveSection}
+        userRole={userRole}
+      />
       <main className="flex-1 overflow-auto">
         <div className="p-6">
           {renderContent()}

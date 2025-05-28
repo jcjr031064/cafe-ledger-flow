@@ -1,14 +1,15 @@
 
 import { useState } from 'react';
-import { Building2, BookOpen, Receipt, Calculator, BarChart3, Users, Settings, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Building2, BookOpen, Receipt, Calculator, BarChart3, Users, Settings, ChevronLeft, ChevronRight, Coffee, Package } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface SidebarProps {
   activeSection: string;
   onSectionChange: (section: string) => void;
+  userRole?: 'head_office' | 'branch' | 'commissary';
 }
 
-const navigation = [
+const headOfficeNavigation = [
   { id: 'dashboard', name: 'Dashboard', icon: BarChart3 },
   { id: 'entities', name: 'Entities', icon: Building2 },
   { id: 'chart-of-accounts', name: 'Chart of Accounts', icon: BookOpen },
@@ -19,8 +20,44 @@ const navigation = [
   { id: 'settings', name: 'Settings', icon: Settings },
 ];
 
-export const Sidebar = ({ activeSection, onSectionChange }: SidebarProps) => {
+const branchNavigation = [
+  { id: 'dashboard', name: 'POS Dashboard', icon: Coffee },
+  { id: 'chart-of-accounts', name: 'Accounts', icon: BookOpen },
+];
+
+const commissaryNavigation = [
+  { id: 'dashboard', name: 'Dashboard', icon: Package },
+  { id: 'chart-of-accounts', name: 'Chart of Accounts', icon: BookOpen },
+  { id: 'journal-entries', name: 'Journal Entries', icon: Receipt },
+];
+
+export const Sidebar = ({ activeSection, onSectionChange, userRole = 'head_office' }: SidebarProps) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
+
+  const getNavigation = () => {
+    switch (userRole) {
+      case 'branch':
+        return branchNavigation;
+      case 'commissary':
+        return commissaryNavigation;
+      default:
+        return headOfficeNavigation;
+    }
+  };
+
+  const getTitle = () => {
+    switch (userRole) {
+      case 'branch':
+        return { title: 'Branch POS', subtitle: 'Point of Sale' };
+      case 'commissary':
+        return { title: 'Commissary', subtitle: 'Supply Management' };
+      default:
+        return { title: 'Coffee Accounting', subtitle: 'IFRS Compliant' };
+    }
+  };
+
+  const navigation = getNavigation();
+  const { title, subtitle } = getTitle();
 
   return (
     <div className={cn(
@@ -32,8 +69,8 @@ export const Sidebar = ({ activeSection, onSectionChange }: SidebarProps) => {
         <div className="flex items-center justify-between">
           {!isCollapsed && (
             <div>
-              <h1 className="text-xl font-bold">Coffee Accounting</h1>
-              <p className="text-sm text-slate-400">IFRS Compliant</p>
+              <h1 className="text-xl font-bold">{title}</h1>
+              <p className="text-sm text-slate-400">{subtitle}</p>
             </div>
           )}
           <button

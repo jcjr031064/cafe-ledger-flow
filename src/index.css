@@ -14,10 +14,10 @@
     --popover: 255 255 255;
     --popover-foreground: 15 23 42;
 
-    --primary: 14 165 233;
+    --primary: 59 130 246;
     --primary-foreground: 255 255 255;
 
-    --secondary: 100 116 139;
+    --secondary: 71 85 105;
     --secondary-foreground: 255 255 255;
 
     --muted: 241 245 249;
@@ -31,7 +31,7 @@
 
     --border: 226 232 240;
     --input: 226 232 240;
-    --ring: 14 165 233;
+    --ring: 59 130 246;
 
     --radius: 0.5rem;
   }
@@ -46,7 +46,7 @@
     --popover: 15 23 42;
     --popover-foreground: 248 250 252;
 
-    --primary: 14 165 233;
+    --primary: 59 130 246;
     --primary-foreground: 255 255 255;
 
     --secondary: 71 85 105;
@@ -63,7 +63,7 @@
 
     --border: 30 41 59;
     --input: 30 41 59;
-    --ring: 14 165 233;
+    --ring: 59 130 246;
   }
 }
 
@@ -83,7 +83,7 @@
   }
   
   .metric-card {
-    @apply bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-4;
+    @apply bg-gradient-to-r from-blue-50 to-slate-50 border border-blue-200 rounded-lg p-4;
   }
   
   .debit-amount {
