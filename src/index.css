@@ -5,65 +5,65 @@
 
 @layer base {
   :root {
-    --background: 248 250 252;
-    --foreground: 15 23 42;
+    --background: 230 226 221; /* #e6e2dd */
+    --foreground: 55 58 54; /* #373a36 */
 
     --card: 255 255 255;
-    --card-foreground: 15 23 42;
+    --card-foreground: 55 58 54; /* #373a36 */
 
     --popover: 255 255 255;
-    --popover-foreground: 15 23 42;
+    --popover-foreground: 55 58 54; /* #373a36 */
 
-    --primary: 59 130 246;
+    --primary: 212 129 102; /* #d48166 */
     --primary-foreground: 255 255 255;
 
-    --secondary: 71 85 105;
+    --secondary: 55 58 54; /* #373a36 */
     --secondary-foreground: 255 255 255;
 
-    --muted: 241 245 249;
+    --muted: 230 226 221; /* #e6e2dd */
     --muted-foreground: 100 116 139;
 
-    --accent: 16 185 129;
+    --accent: 212 129 102; /* #d48166 */
     --accent-foreground: 255 255 255;
 
     --destructive: 239 68 68;
     --destructive-foreground: 255 255 255;
 
-    --border: 226 232 240;
-    --input: 226 232 240;
-    --ring: 59 130 246;
+    --border: 200 196 191; /* lighter version of #e6e2dd */
+    --input: 200 196 191;
+    --ring: 212 129 102; /* #d48166 */
 
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 2 6 23;
-    --foreground: 248 250 252;
+    --background: 55 58 54; /* #373a36 */
+    --foreground: 230 226 221; /* #e6e2dd */
 
-    --card: 15 23 42;
-    --card-foreground: 248 250 252;
+    --card: 75 78 74; /* darker version of #373a36 */
+    --card-foreground: 230 226 221; /* #e6e2dd */
 
-    --popover: 15 23 42;
-    --popover-foreground: 248 250 252;
+    --popover: 75 78 74;
+    --popover-foreground: 230 226 221; /* #e6e2dd */
 
-    --primary: 59 130 246;
+    --primary: 212 129 102; /* #d48166 */
     --primary-foreground: 255 255 255;
 
-    --secondary: 71 85 105;
-    --secondary-foreground: 248 250 252;
+    --secondary: 100 103 99; /* lighter version of #373a36 */
+    --secondary-foreground: 230 226 221; /* #e6e2dd */
 
-    --muted: 30 41 59;
-    --muted-foreground: 148 163 184;
+    --muted: 75 78 74;
+    --muted-foreground: 180 176 171; /* muted version of #e6e2dd */
 
-    --accent: 16 185 129;
+    --accent: 212 129 102; /* #d48166 */
     --accent-foreground: 255 255 255;
 
     --destructive: 239 68 68;
     --destructive-foreground: 255 255 255;
 
-    --border: 30 41 59;
-    --input: 30 41 59;
-    --ring: 59 130 246;
+    --border: 100 103 99;
+    --input: 100 103 99;
+    --ring: 212 129 102; /* #d48166 */
   }
 }
 
@@ -83,7 +83,7 @@
   }
   
   .metric-card {
-    @apply bg-gradient-to-r from-blue-50 to-slate-50 border border-blue-200 rounded-lg p-4;
+    @apply bg-gradient-to-r from-orange-50 to-stone-50 border border-orange-200 rounded-lg p-4;
   }
   
   .debit-amount {

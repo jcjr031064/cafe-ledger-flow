@@ -61,21 +61,27 @@ export const Sidebar = ({ activeSection, onSectionChange, userRole = 'head_offic
 
   return (
     <div className={cn(
-      "bg-slate-900 text-white h-screen flex flex-col transition-all duration-300",
+      "text-white h-screen flex flex-col transition-all duration-300",
       isCollapsed ? "w-16" : "w-64"
-    )}>
+    )} style={{ backgroundColor: '#373a36' }}>
       {/* Header */}
-      <div className="p-4 border-b border-slate-700">
+      <div className="p-4 border-b" style={{ borderColor: 'rgba(230, 226, 221, 0.2)' }}>
         <div className="flex items-center justify-between">
           {!isCollapsed && (
             <div>
               <h1 className="text-xl font-bold">{title}</h1>
-              <p className="text-sm text-slate-400">{subtitle}</p>
+              <p className="text-sm" style={{ color: '#e6e2dd' }}>{subtitle}</p>
             </div>
           )}
           <button
             onClick={() => setIsCollapsed(!isCollapsed)}
-            className="p-2 hover:bg-slate-800 rounded-lg transition-colors"
+            className="p-2 rounded-lg transition-colors"
+            style={{ 
+              backgroundColor: 'rgba(230, 226, 221, 0.1)',
+              color: '#e6e2dd'
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(212, 129, 102, 0.2)'}
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(230, 226, 221, 0.1)'}
           >
             {isCollapsed ? <ChevronRight size={20} /> : <ChevronLeft size={20} />}
           </button>
@@ -87,16 +93,29 @@ export const Sidebar = ({ activeSection, onSectionChange, userRole = 'head_offic
         <ul className="space-y-2">
           {navigation.map((item) => {
             const Icon = item.icon;
+            const isActive = activeSection === item.id;
             return (
               <li key={item.id}>
                 <button
                   onClick={() => onSectionChange(item.id)}
                   className={cn(
                     "w-full flex items-center p-3 rounded-lg transition-colors text-left",
-                    activeSection === item.id
-                      ? "bg-blue-600 text-white"
-                      : "text-slate-300 hover:bg-slate-800 hover:text-white"
+                    isActive ? "text-white" : "hover:text-white"
                   )}
+                  style={{
+                    backgroundColor: isActive ? '#d48166' : 'transparent',
+                    color: isActive ? 'white' : '#e6e2dd'
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!isActive) {
+                      e.currentTarget.style.backgroundColor = 'rgba(212, 129, 102, 0.2)';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isActive) {
+                      e.currentTarget.style.backgroundColor = 'transparent';
+                    }
+                  }}
                 >
                   <Icon size={20} />
                   {!isCollapsed && (
@@ -111,8 +130,8 @@ export const Sidebar = ({ activeSection, onSectionChange, userRole = 'head_offic
 
       {/* Footer */}
       {!isCollapsed && (
-        <div className="p-4 border-t border-slate-700">
-          <div className="text-sm text-slate-400">
+        <div className="p-4 border-t" style={{ borderColor: 'rgba(230, 226, 221, 0.2)' }}>
+          <div className="text-sm" style={{ color: '#e6e2dd' }}>
             <p>© 2024 Coffee Chain</p>
             <p>Version 1.0.0</p>
           </div>
