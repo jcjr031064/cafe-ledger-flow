@@ -19,11 +19,12 @@ export const BranchDashboard = () => {
     inventory: 85, // percentage
   };
 
-  const quickActions = [
-    { name: 'New Sale', icon: ShoppingCart, color: 'bg-green-600 hover:bg-green-700' },
-    { name: 'Inventory Check', icon: Package, color: 'bg-blue-600 hover:bg-blue-700' },
-    { name: 'Inter-Branch Transfer', icon: ArrowRightLeft, color: 'bg-purple-600 hover:bg-purple-700' },
-    { name: 'Daily Report', icon: TrendingUp, color: 'bg-orange-600 hover:bg-orange-700' },
+  const primaryAction = { name: 'New Sale', icon: ShoppingCart };
+  
+  const secondaryActions = [
+    { name: 'Inventory Check', icon: Package },
+    { name: 'Inter-Branch Transfer', icon: ArrowRightLeft },
+    { name: 'Daily Report', icon: TrendingUp },
   ];
 
   const recentTransactions = [
@@ -34,123 +35,136 @@ export const BranchDashboard = () => {
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6" style={{ backgroundColor: '#e6e2dd', minHeight: '100vh', padding: '1.5rem' }}>
       {/* Header */}
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 flex items-center">
-            <Coffee className="h-8 w-8 mr-3 text-blue-600" />
+          <h1 className="text-3xl font-bold flex items-center" style={{ color: '#373a36' }}>
+            <Coffee className="h-8 w-8 mr-3" style={{ color: '#d48166' }} />
             Branch POS Dashboard
           </h1>
-          <p className="text-gray-600">Branch 1 - Downtown • Today's Operations</p>
+          <p style={{ color: '#373a36', opacity: 0.7 }}>Branch 1 - Downtown • Today's Operations</p>
         </div>
-        <Badge variant="default" className="text-sm px-3 py-1">
+        <Badge variant="default" className="text-sm px-3 py-1" style={{ backgroundColor: '#d48166', color: 'white' }}>
           Online • {new Date().toLocaleDateString()}
         </Badge>
       </div>
 
       {/* Today's Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <Card className="metric-card">
+        <Card className="border" style={{ backgroundColor: 'white', borderColor: '#d48166' }}>
           <CardHeader className="pb-3">
-            <CardTitle className="text-sm font-medium text-gray-600 flex items-center">
-              <DollarSign className="h-4 w-4 mr-2" />
+            <CardTitle className="text-sm font-medium flex items-center" style={{ color: '#373a36' }}>
+              <DollarSign className="h-4 w-4 mr-2" style={{ color: '#d48166' }} />
               Today's Sales
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-green-600">
+            <div className="text-2xl font-bold" style={{ color: '#d48166' }}>
               {formatCurrency(todayStats.sales)}
             </div>
-            <p className="text-xs text-gray-500 mt-1">+12% vs yesterday</p>
+            <p className="text-xs mt-1" style={{ color: '#373a36', opacity: 0.6 }}>+12% vs yesterday</p>
           </CardContent>
         </Card>
 
-        <Card className="metric-card">
+        <Card className="border" style={{ backgroundColor: 'white', borderColor: '#d48166' }}>
           <CardHeader className="pb-3">
-            <CardTitle className="text-sm font-medium text-gray-600 flex items-center">
-              <ShoppingCart className="h-4 w-4 mr-2" />
+            <CardTitle className="text-sm font-medium flex items-center" style={{ color: '#373a36' }}>
+              <ShoppingCart className="h-4 w-4 mr-2" style={{ color: '#d48166' }} />
               Transactions
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-blue-600">
+            <div className="text-2xl font-bold" style={{ color: '#d48166' }}>
               {todayStats.transactions}
             </div>
-            <p className="text-xs text-gray-500 mt-1">Active since 6:00 AM</p>
+            <p className="text-xs mt-1" style={{ color: '#373a36', opacity: 0.6 }}>Active since 6:00 AM</p>
           </CardContent>
         </Card>
 
-        <Card className="metric-card">
+        <Card className="border" style={{ backgroundColor: 'white', borderColor: '#d48166' }}>
           <CardHeader className="pb-3">
-            <CardTitle className="text-sm font-medium text-gray-600">
+            <CardTitle className="text-sm font-medium" style={{ color: '#373a36' }}>
               Avg Transaction
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-purple-600">
+            <div className="text-2xl font-bold" style={{ color: '#d48166' }}>
               {formatCurrency(todayStats.avgTransaction)}
             </div>
-            <p className="text-xs text-gray-500 mt-1">Per customer</p>
+            <p className="text-xs mt-1" style={{ color: '#373a36', opacity: 0.6 }}>Per customer</p>
           </CardContent>
         </Card>
 
-        <Card className="metric-card">
+        <Card className="border" style={{ backgroundColor: 'white', borderColor: '#d48166' }}>
           <CardHeader className="pb-3">
-            <CardTitle className="text-sm font-medium text-gray-600 flex items-center">
-              <Package className="h-4 w-4 mr-2" />
+            <CardTitle className="text-sm font-medium flex items-center" style={{ color: '#373a36' }}>
+              <Package className="h-4 w-4 mr-2" style={{ color: '#d48166' }} />
               Inventory Level
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-orange-600">
+            <div className="text-2xl font-bold" style={{ color: '#d48166' }}>
               {todayStats.inventory}%
             </div>
-            <p className="text-xs text-gray-500 mt-1">Stock remaining</p>
+            <p className="text-xs mt-1" style={{ color: '#373a36', opacity: 0.6 }}>Stock remaining</p>
           </CardContent>
         </Card>
       </div>
 
       {/* Quick Actions */}
-      <Card className="financial-card">
+      <Card className="border" style={{ backgroundColor: 'white', borderColor: '#d48166' }}>
         <CardHeader>
-          <CardTitle>Quick Actions</CardTitle>
+          <CardTitle style={{ color: '#373a36' }}>Quick Actions</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {quickActions.map((action) => {
-              const Icon = action.icon;
-              return (
-                <Button
-                  key={action.name}
-                  className={`${action.color} text-white h-20 flex-col space-y-2`}
-                >
-                  <Icon className="h-6 w-6" />
-                  <span className="text-sm">{action.name}</span>
-                </Button>
-              );
-            })}
+          <div className="space-y-4">
+            {/* Primary Action - New Sale */}
+            <Button
+              className="w-full h-24 text-xl font-semibold flex-col space-y-3 text-white hover:opacity-90 transition-opacity"
+              style={{ backgroundColor: '#d48166' }}
+            >
+              <primaryAction.icon className="h-8 w-8" />
+              <span>{primaryAction.name}</span>
+            </Button>
+            
+            {/* Secondary Actions */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {secondaryActions.map((action) => {
+                const Icon = action.icon;
+                return (
+                  <Button
+                    key={action.name}
+                    className="h-16 flex-col space-y-2 text-white hover:opacity-90 transition-opacity"
+                    style={{ backgroundColor: '#373a36' }}
+                  >
+                    <Icon className="h-5 w-5" />
+                    <span className="text-sm">{action.name}</span>
+                  </Button>
+                );
+              })}
+            </div>
           </div>
         </CardContent>
       </Card>
 
       {/* Recent Transactions & Pending Transfers */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card className="financial-card">
+        <Card className="border" style={{ backgroundColor: 'white', borderColor: '#d48166' }}>
           <CardHeader>
-            <CardTitle>Recent Transactions</CardTitle>
+            <CardTitle style={{ color: '#373a36' }}>Recent Transactions</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
               {recentTransactions.map((transaction) => (
-                <div key={transaction.id} className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                <div key={transaction.id} className="flex justify-between items-center p-3 rounded-lg" style={{ backgroundColor: '#e6e2dd' }}>
                   <div>
-                    <p className="font-medium">#{transaction.id}</p>
-                    <p className="text-sm text-gray-600">{transaction.items}</p>
-                    <p className="text-xs text-gray-500">{transaction.time}</p>
+                    <p className="font-medium" style={{ color: '#373a36' }}>#{transaction.id}</p>
+                    <p className="text-sm" style={{ color: '#373a36', opacity: 0.7 }}>{transaction.items}</p>
+                    <p className="text-xs" style={{ color: '#373a36', opacity: 0.5 }}>{transaction.time}</p>
                   </div>
                   <div className="text-right">
-                    <p className="font-semibold text-green-600">{formatCurrency(transaction.amount)}</p>
+                    <p className="font-semibold" style={{ color: '#d48166' }}>{formatCurrency(transaction.amount)}</p>
                   </div>
                 </div>
               ))}
@@ -158,35 +172,35 @@ export const BranchDashboard = () => {
           </CardContent>
         </Card>
 
-        <Card className="financial-card">
+        <Card className="border" style={{ backgroundColor: 'white', borderColor: '#d48166' }}>
           <CardHeader>
-            <CardTitle>Inter-Branch Transfers</CardTitle>
+            <CardTitle style={{ color: '#373a36' }}>Inter-Branch Transfers</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
-              <div className="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
+              <div className="flex justify-between items-center p-3 rounded-lg" style={{ backgroundColor: '#e6e2dd' }}>
                 <div>
-                  <p className="font-medium">Coffee Beans Request</p>
-                  <p className="text-sm text-gray-600">From Commissary</p>
-                  <Badge variant="secondary" className="text-xs mt-1">Pending</Badge>
+                  <p className="font-medium" style={{ color: '#373a36' }}>Coffee Beans Request</p>
+                  <p className="text-sm" style={{ color: '#373a36', opacity: 0.7 }}>From Commissary</p>
+                  <Badge variant="secondary" className="text-xs mt-1" style={{ backgroundColor: '#373a36', color: 'white' }}>Pending</Badge>
                 </div>
                 <div className="text-right">
-                  <p className="text-sm font-semibold">50 lbs</p>
+                  <p className="text-sm font-semibold" style={{ color: '#373a36' }}>50 lbs</p>
                 </div>
               </div>
               
-              <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+              <div className="flex justify-between items-center p-3 rounded-lg" style={{ backgroundColor: '#e6e2dd' }}>
                 <div>
-                  <p className="font-medium">Pastry Transfer</p>
-                  <p className="text-sm text-gray-600">To Branch 2</p>
-                  <Badge variant="default" className="text-xs mt-1">Completed</Badge>
+                  <p className="font-medium" style={{ color: '#373a36' }}>Pastry Transfer</p>
+                  <p className="text-sm" style={{ color: '#373a36', opacity: 0.7 }}>To Branch 2</p>
+                  <Badge variant="default" className="text-xs mt-1" style={{ backgroundColor: '#d48166', color: 'white' }}>Completed</Badge>
                 </div>
                 <div className="text-right">
-                  <p className="text-sm font-semibold">24 items</p>
+                  <p className="text-sm font-semibold" style={{ color: '#373a36' }}>24 items</p>
                 </div>
               </div>
 
-              <Button variant="outline" className="w-full mt-4">
+              <Button variant="outline" className="w-full mt-4 hover:opacity-90 transition-opacity" style={{ borderColor: '#d48166', color: '#d48166' }}>
                 <ArrowRightLeft className="h-4 w-4 mr-2" />
                 New Transfer Request
               </Button>
