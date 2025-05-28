@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -107,12 +106,11 @@ export const ChartOfAccounts = () => {
                   <select
                     value={selectedType}
                     onChange={(e) => setSelectedType(e.target.value)}
-                    className="px-3 py-2 border rounded-md focus:outline-none focus:ring-2"
+                    className="px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#d48166] focus:border-[#d48166]"
                     style={{ 
                       borderColor: '#373a36', 
                       backgroundColor: 'white', 
-                      color: '#373a36',
-                      focusRingColor: '#d48166'
+                      color: '#373a36'
                     }}
                   >
                     {accountTypes.map(type => (
